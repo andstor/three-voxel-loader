@@ -24,12 +24,25 @@ class VoxelLoader extends Loader {
     this.LOD = null;
     this.setLOD();
 
-    this.material = new MeshPhongMaterial({
-      color: 0xffffff,
-      vertexColors: VertexColors,
-    });
+    this.material = null;
+    this.setVoxelMaterial();
     this.voxelSize = null;
     this.setVoxelSize();
+  }
+
+  /**
+   * Set the material used for all voxels.
+   * Note that the {@link Material.vertexColors} will be set to {@link VertexColors}.
+   * @param {Material} Material The wanted material.
+   */
+  setVoxelMaterial(material) {
+    let defaultMaterial = new MeshPhongMaterial({
+      color: 0xffffff
+    });
+
+    material = typeof material !== 'undefined' ? material : defaultMaterial;
+    material.vertexColors = VertexColors
+    this.material = material;
   }
 
   /**
@@ -92,7 +105,6 @@ class VoxelLoader extends Loader {
     console.log("Generating Mesh")
 
     let mergedGeometry = new Geometry();
-    console.log(this.voxelSize)
     let voxelGeometry = new BoxGeometry(this.voxelSize, this.voxelSize, this.voxelSize);
     const material = this.material;
     let s = 1
