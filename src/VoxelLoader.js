@@ -125,14 +125,16 @@ class VoxelLoader extends Loader {
         //voxelGeometry.scale(i, i, i);
 
         const rgb = leaf.data[0].color;
-        const color = new Color().setRGB(rgb.r / 255, rgb.g / 255, rgb.b / 255);
-        voxelGeometry.translate(pos.x, pos.y, pos.z);
+        if (rgb != null) {
+          const color = new Color().setRGB(rgb.r / 255, rgb.g / 255, rgb.b / 255);
 
-        for (var i = 0; i < voxelGeometry.faces.length; i++) {
-          let face = voxelGeometry.faces[i];
-          face.color.set(color);
+          for (var i = 0; i < voxelGeometry.faces.length; i++) {
+            let face = voxelGeometry.faces[i];
+            face.color.set(color);
+          }
         }
 
+        voxelGeometry.translate(pos.x, pos.y, pos.z);
         mergedGeometry.merge(voxelGeometry);
         voxelGeometry.translate(-pos.x, -pos.y, -pos.z);
 
