@@ -4,6 +4,7 @@
 
 import { ArrayLoader } from "./loaders/ArrayLoader"
 import { VOXLoader } from "./loaders/VOXLoader"
+import { XMLLoader } from "./loaders/XMLLoader"
 
 /**
  * Factory class for creating various loaders.
@@ -17,6 +18,9 @@ class LoaderFactory {
     switch (type) {
       case 'vox':
         return new VOXLoader();
+        break;
+      case 'xml':
+        return new XMLLoader();
         break;
       case 'array':
         return new ArrayLoader();
