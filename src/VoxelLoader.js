@@ -4,7 +4,6 @@
 
 import autoBind from 'auto-bind';
 import { Color, BufferGeometry, Loader, MeshPhongMaterial, BoxGeometry, Vector3, Mesh, Geometry, VertexColors } from 'three';
-import { ArrayLoader } from "./loaders/ArrayLoader";
 import { LoaderFactory } from "./LoaderFactory";
 
 /**
@@ -87,7 +86,7 @@ class VoxelLoader extends Loader {
   /**
    * Parses voxel data.
    * @param {PointOctree} octree Octree with voxel data stored as points in space.
-   * @returns {Promise}
+	 * @return {Promise<PointOctree>} Promise with an octree filled with voxel data.
    */
   parseData(data, type) {
     let scope = this;

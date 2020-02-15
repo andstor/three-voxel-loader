@@ -63,6 +63,7 @@ class VOXLoader extends Loader {
 	 * @return {Promise<PointOctree>} Promise with an octree filled with voxel data.
 	 */
   parse(buffer) {
+
     return new Promise((resolve, reject) => {
       VoxReader.read(buffer, (data, err) => {
 
