@@ -80,26 +80,35 @@ class VoxelLoader extends Loader {
 
     loader.load(url, function (octree) {
       scope.octree = octree;
-
       onLoad(scope.generateMesh(octree));
     }, onProgress, onError);
   }
 
   /**
-   * Loads and parses data stored as a 3D array.
-   * @param {number[][][]} array voxel data stored as a 3D array with zeroes and ones.
+   * Parses voxel data.
+   * @param {PointOctree} octree Octree with voxel data stored as points in space.
+   * @returns {Promise}
    */
-  loadArray(array) {
-    let loader = new ArrayLoader();
-    loader.setLOD(1, 8);
-    this.octree = loader.parse(array);
-    return this.generateMesh(this.octree);
+  parseData(data, type) {
+    let scope = this;
+    let loaderFactory = new LoaderFactory();
+
+    let loader = loaderFactory.getLoader(type);
+    loader.setLOD(this.LOD.maxPoints, this.LOD.maxDepth);
+
+    return new Promise((resolve, reject) => {
+      loader.parse(data).then((octree) => {
+        scope.octree = octree;
+        resolve(scope.generateMesh(octree));
+      });
+    });
   }
 
   /**
    * Generates a polygon mesh with cubes based on voxel data.
    * One cube for each voxel.
    * @param {PointOctree} octree Octree with voxel data stored as points in space.
+   * @returns {Mesh} 3D mesh based on voxel data
    */
   generateMesh(octree) {
     console.log("Generating Mesh")
