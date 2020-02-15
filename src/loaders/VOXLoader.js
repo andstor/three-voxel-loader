@@ -7,6 +7,7 @@ import autoBind from 'auto-bind';
 import { FileLoader, Matrix4, Vector3, LoadingManager } from 'three';
 import { PointOctree } from "sparse-octree";
 import { VoxReader, VoxNodeTools, VoxTools } from '@sh-dave/format-vox';
+import { Vector4 } from 'math-ds';
 
 /**
  * Class for loading voxel data stored in VOX files.
@@ -59,11 +60,13 @@ class VOXLoader extends Loader {
 	/**
 	 * Parse VOX file data.
 	 * @param {Buffer} buffer Content of VOX file.
-	 * @return {PointOctree} Octree with data from the VOX file data.
+	 * @return {Promise<PointOctree>} Promise with an octree filled with voxel data.
 	 */
   parse(buffer) {
+
     return new Promise((resolve, reject) => {
       VoxReader.read(buffer, (data, err) => {
+
         if (err) {
           reject(err);
         }
@@ -74,70 +77,84 @@ class VOXLoader extends Loader {
 
         let positions = [];
 
-        VoxNodeTools.walkNodeGraph(data, {
-          beginGraph: () => {
-          },
+        if (data.world == null) {
+          let size = data.sizes[0];
+          let modelSize = new Vector3(size.x, size.z, size.y);
 
-          endGraph: () => {
-          },
+          positions.push({
+            model: 0,
+            position: new Vector3(),
+            rotation: new Vector4(),
+            size: modelSize,
+          });
 
-          onTransform: attributes => {
-            if (VoxTools.dictHasTranslation(attributes)) {
-              const t = VoxTools.getTranslationFromDict(attributes);
-              transforms.push(new Vector3(t.x, t.z, t.y))
-              vector.add(new Vector3(t.x, t.z, t.y))
-            } else {
-              transforms.push(new Vector3())
+        } else {
+
+          VoxNodeTools.walkNodeGraph(data, {
+            beginGraph: () => {
+            },
+
+            endGraph: () => {
+            },
+
+            onTransform: attributes => {
+              if (VoxTools.dictHasTranslation(attributes)) {
+                const t = VoxTools.getTranslationFromDict(attributes);
+                transforms.push(new Vector3(t.x, t.z, t.y))
+                vector.add(new Vector3(t.x, t.z, t.y))
+              } else {
+                transforms.push(new Vector3())
+              }
+
+              if (VoxTools.dictHasRotation(attributes)) {
+                const r = VoxTools.getRotationFromDict(attributes);
+                let m = new Matrix4();
+                m.set(
+                  r._00, r._01, r._02, 0,
+                  r._10, r._11, r._12, 0,
+                  r._20, r._21, r._22, 0,
+                  0, 0, 0, 1
+                );
+
+                transforms.push(m)
+                rotation.multiply(m);
+              } else {
+                transforms.push(new Matrix4())
+              }
+            },
+
+            beginGroup: () => {
+            },
+
+            endGroup: () => {
+              let m = transforms.pop();
+              let vec = transforms.pop();
+              vector.sub(vec);
+              rotation.multiply(m.getInverse(m));
+            },
+
+            onShape: (attributes, models) => {
+              let modelId = models[0].modelId;
+              let position = new Vector3().add(vector)
+              let rotVec = new Matrix4().multiply(rotation);
+
+              let size = data.sizes[modelId];
+              let modelSize = new Vector3(size.x, size.z, size.y);
+
+              positions.push({
+                model: modelId,
+                position: position,
+                rotation: rotVec,
+                size: modelSize,
+              });
+
+              let m = transforms.pop();
+              let vec = transforms.pop();
+              vector.sub(vec);
+              rotation.multiply(m.getInverse(m));
             }
-
-            if (VoxTools.dictHasRotation(attributes)) {
-              const r = VoxTools.getRotationFromDict(attributes);
-              let m = new Matrix4();
-              m.set(
-                r._00, r._01, r._02, 0,
-                r._10, r._11, r._12, 0,
-                r._20, r._21, r._22, 0,
-                0, 0, 0, 1
-              );
-
-              transforms.push(m)
-              rotation.multiply(m);
-            } else {
-              transforms.push(new Matrix4())
-            }
-          },
-
-          beginGroup: () => {
-          },
-
-          endGroup: () => {
-            let m = transforms.pop();
-            let vec = transforms.pop();
-            vector.sub(vec);
-            rotation.multiply(m.getInverse(m));
-          },
-
-          onShape: (attributes, models) => {
-            let modelId = models[0].modelId;
-            let position = new Vector3().add(vector)
-            let rotVec = new Matrix4().multiply(rotation);
-
-            let size = data.sizes[modelId];
-            let modelSize = new Vector3(size.x, size.z, size.y);
-
-            positions.push({
-              model: modelId,
-              position: position,
-              rotation: rotVec,
-              size: modelSize,
-            });
-
-            let m = transforms.pop();
-            let vec = transforms.pop();
-            vector.sub(vec);
-            rotation.multiply(m.getInverse(m));
-          }
-        });
+          });
+        }
 
         let xMin = Infinity;
         let yMin = Infinity;
@@ -181,7 +198,7 @@ class VOXLoader extends Loader {
 
             position.sub(worldCorrection)
             // TODO fix rotation matrix basis
-            //position.applyMatrix4(rot)
+            //position.applyMatrix4(rot
             position.add(pos)
 
             octree.insert(position, voxelData);

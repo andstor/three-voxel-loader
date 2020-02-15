@@ -39,7 +39,9 @@ class XMLLoader extends Loader {
     //loader.setResponseType('arraybuffer')
     loader.load(url, function (buffer) {
 
-      onLoad(scope.parse(buffer));
+      scope.parse(buffer)
+        .then(octree => onLoad(octree))
+        .catch(err => console.error(err))
 
     }, onProgress, onError);
   }
@@ -56,50 +58,54 @@ class XMLLoader extends Loader {
 	/**
 	 * Parse XML file data.
 	 * @param {Buffer} buffer Content of XML file.
-	 * @return {PointOctree} Octree with data from the XML file data.
+	 * @return {Promise<PointOctree>} Promise with an octree filled with voxel data.
 	 */
   parse(buffer) {
-    let parser = new DOMParser();
-    let xmlDoc = parser.parseFromString(buffer, "application/xml");
+    return new Promise((resolve, reject) => {
 
-    const dimensionsNode = xmlDoc.documentElement.getElementsByTagName("dimensions")[0];
-    const widthNode = dimensionsNode.getElementsByTagName("width")[0];
-    const width = widthNode.childNodes[0].nodeValue;
-    const heightNode = dimensionsNode.getElementsByTagName("height")[0];
-    const height = heightNode.childNodes[0].nodeValue;
-    const depthNode = dimensionsNode.getElementsByTagName("depth")[0];
-    const depth = depthNode.childNodes[0].nodeValue;
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(buffer, "application/xml");
 
-    const voxelsNode = xmlDoc.documentElement.getElementsByTagName("voxels")[0];
-    const voxelNodes = voxelsNode.getElementsByTagName("voxel");
+      const dimensionsNode = xmlDoc.documentElement.getElementsByTagName("dimensions")[0];
+      const widthNode = dimensionsNode.getElementsByTagName("width")[0];
+      const width = widthNode.childNodes[0].nodeValue;
+      const heightNode = dimensionsNode.getElementsByTagName("height")[0];
+      const height = heightNode.childNodes[0].nodeValue;
+      const depthNode = dimensionsNode.getElementsByTagName("depth")[0];
+      const depth = depthNode.childNodes[0].nodeValue;
 
-    const min = new Vector3(-width / 2, -height / 2, -depth / 2);
-    const max = new Vector3(width / 2, height / 2, depth / 2);
+      const voxelsNode = xmlDoc.documentElement.getElementsByTagName("voxels")[0];
+      const voxelNodes = voxelsNode.getElementsByTagName("voxel");
 
-    const octree = new PointOctree(min, max, 0, this.LOD.maxPoints, this.LOD.maxDepth);
-    let voxelData = {};
+      const min = new Vector3(-width / 2, -height / 2, -depth / 2);
+      const max = new Vector3(width / 2, height / 2, depth / 2);
 
-    Array.from(voxelNodes).forEach(voxelNode => {
-      for (let i = 0; i < voxelNode.children.length; i++) {
-        const positionNode = voxelNode.children[i];
-        let x, y, z;
+      const octree = new PointOctree(min, max, 0, this.LOD.maxPoints, this.LOD.maxDepth);
+      let voxelData = {};
 
-        const xNode = positionNode.getElementsByTagName("x")[0];
-        x = xNode.childNodes[0].nodeValue;
-        const yNode = positionNode.getElementsByTagName("y")[0];
-        y = yNode.childNodes[0].nodeValue;
-        const zNode = positionNode.getElementsByTagName("z")[0];
-        z = zNode.childNodes[0].nodeValue;
+      Array.from(voxelNodes).forEach(voxelNode => {
+        for (let i = 0; i < voxelNode.children.length; i++) {
+          const positionNode = voxelNode.children[i];
+          let x, y, z;
 
-        x = x - width / 2;
-        y = y - height / 2;
-        z = z - depth / 2;
-        octree.insert(new Vector3(x, y, z), voxelData);
-      }
+          const xNode = positionNode.getElementsByTagName("x")[0];
+          x = xNode.childNodes[0].nodeValue;
+          const yNode = positionNode.getElementsByTagName("y")[0];
+          y = yNode.childNodes[0].nodeValue;
+          const zNode = positionNode.getElementsByTagName("z")[0];
+          z = zNode.childNodes[0].nodeValue;
+
+          x = x - width / 2;
+          y = y - height / 2;
+          z = z - depth / 2;
+          octree.insert(new Vector3(x, y, z), voxelData);
+        }
+      });
+
+      resolve(octree);
     });
-
-    return octree;
   }
+
 
 }
 
