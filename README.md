@@ -75,5 +75,5 @@ Importing of several file types and data structures with voxel data are supporte
 
 ## License
 
-three-voxel-loader is licensed under the [MIT License](https://github.com/andstor/three-voxel-loader/blob/master/LICENSE).
+three-voxel-loader is licensed under the [MIT License](https://github.com/andstor/three-voxel-loader/blob/master/LICENSE).  
 Copyright © [André Storhaug](https://github.com/andstor)
