@@ -37,7 +37,10 @@ let umdConfig = {
     },
     plugins: [
         new webpack.BannerPlugin({banner: banner}),
-    ]
+    ],
+    externals: {
+      three: 'three',
+    }
 };
 
 module.exports = umdConfig;
