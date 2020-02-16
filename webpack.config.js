@@ -1,16 +1,15 @@
 const webpack = require("webpack");
 const path = require("path");
 const pkg = require('./package.json');
-const mode = 'development';
+const mode = 'production';
 
-const timeStamp = new Date().toLocaleTimeString();
 const date = new Date();
 const banner = `
 ${pkg.name} v${pkg.version}       ${date}
 by ${pkg.author.name}    ${pkg.author.email}
 ${pkg.homepage}
 
-Copyright: 2019 André Storhaug
+Copyright: 2020 André Storhaug
 License: ${pkg.license}
 
 Build: [hash]
