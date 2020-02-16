@@ -7,7 +7,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/andstor/three-voxel-loader/badge.svg?branch=master)](https://coveralls.io/github/andstor/three-voxel-loader?branch=master)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/andstorh/three-voxel-loader.svg?)](https://lgtm.com/projects/g/andstorh/three-voxel-loader/context:javascript)
 
-Documentation - Wiki
+[Documentation](https://andstor.github.io/three-voxel-loader/) - [Wiki](https://github.com/andstor/three-voxel-loader/wiki)
 
 ## Table of Contents
   * [Installation](#installation)
