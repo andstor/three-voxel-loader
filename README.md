@@ -42,23 +42,23 @@ let loader = new VoxelLoader();
 
 // Load a resource from provided URL.
 loader.load(
-	// Resource URL.
-	'models/monster.vox',
+  // Resource URL.
+  'models/monster.vox',
 
   // Called when resource is loaded.
   function ( voxels ) {
-		scene.add( voxels );
-	},
+    scene.add( voxels );
+  },
 
   // Called when loading is in progresses.
-	function ( xhr ) {
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-	},
+  function ( xhr ) {
+    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  },
 
   // Called when loading has errors.
-	function ( error ) {
-		console.log( 'An error happened' );
-	}
+  function ( error ) {
+    console.log( 'An error happened' );
+  }
 );
 ```
 
