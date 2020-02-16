@@ -1,0 +1,58 @@
+{
+  "name": "three-voxel-loader",
+  "version": "1.0.0",
+  "description": "Load voxel data for visualization",
+  "main": "lib/voxel-loader.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andstor/three-voxel-loader.git"
+  },
+  "keywords": [
+    "visualization",
+    "voxel",
+    "three.js"
+  ],
+  "author": {
+    "name": "André Storhaug",
+    "email": "andr3.storhaug@gmail.com",
+    "url": "https://github.com/andstor"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andstor/three-voxel-loader/issues"
+  },
+  "files": [
+    "/lib",
+    "/src"
+  ],
+  "homepage": "https://github.com/andstor/three-voxel-loader",
+  "dependencies": {
+    "@sh-dave/format-vox": "^0.1.5",
+    "auto-bind": "^4.0.0",
+    "iterator-result": "^1.0.0",
+    "math-ds": ">= 1.0.0 < 2.0.0",
+    "sparse-octree": "^6.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-jest": "^24.6.0",
+    "babel-loader": "^8.0.6",
+    "coveralls": "^3.0.3",
+    "jest": "^24.6.0",
+    "three": "^0.x.x",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.11"
+  },
+  "peerDependencies": {
+    "three": "^0.x.x"
+  }
+}
