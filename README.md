@@ -5,7 +5,7 @@
 [![npm version](http://img.shields.io/npm/v/three-voxel-loader.svg?style=flat)](https://npmjs.org/package/three-voxel-loader "View this project on npm")
 [![Build Status](https://travis-ci.org/andstor/three-voxel-loader.svg?branch=master)](https://travis-ci.org/andstor/three-voxel-loader)
 [![Coverage Status](https://coveralls.io/repos/github/andstor/three-voxel-loader/badge.svg?branch=master)](https://coveralls.io/github/andstor/three-voxel-loader?branch=master)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/andstorh/three-voxel-loader.svg?)](https://lgtm.com/projects/g/andstorh/three-voxel-loader/context:javascript)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/andstor/three-voxel-loader.svg?)](https://lgtm.com/projects/g/andstor/three-voxel-loader/context:javascript)
 
 [Documentation](https://andstor.github.io/three-voxel-loader/) - [Wiki](https://github.com/andstor/three-voxel-loader/wiki)
 
