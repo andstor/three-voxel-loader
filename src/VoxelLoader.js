@@ -110,15 +110,12 @@ class VoxelLoader extends Loader {
    * @returns {Mesh} 3D mesh based on voxel data
    */
   generateMesh(octree) {
-    console.log("Generating Mesh")
 
     let mergedGeometry = new Geometry();
     let voxelGeometry = new BoxGeometry(this.voxelSize, this.voxelSize, this.voxelSize);
     const material = this.material;
     let s = 1
     //voxelGeometry.scale(s, s, s);
-
-    console.log("Generating cubes")
 
     for (const leaf of octree.leaves()) {
       if (leaf.points !== null) {
@@ -150,14 +147,13 @@ class VoxelLoader extends Loader {
 
       }
     }
-    console.log("Generated cubes");
 
     let bufGeometry = new BufferGeometry().fromGeometry(mergedGeometry);
     bufGeometry.computeFaceNormals();
     bufGeometry.computeVertexNormals();
 
     var voxels = new Mesh(bufGeometry, material);
-    console.log("Mesh Generated");
+
     return voxels;
   }
 }
