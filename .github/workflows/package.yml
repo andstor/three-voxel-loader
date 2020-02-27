@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,9 +18,11 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
+      - run: npm run build --if-present
       - run: npm test
 
   publish:
+    name: Publish
     needs: build
     runs-on: ubuntu-latest
     steps:
