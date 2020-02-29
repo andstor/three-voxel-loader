@@ -16,6 +16,7 @@ jobs:
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./src
+          recurse: true
           output_dir: ./out
           template_name: minami
           front_page: README.md
