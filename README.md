@@ -74,7 +74,7 @@ Importing of several file types and data structures with voxel data are supporte
 - [Sparse octree](https://github.com/vanruesc/sparse-octree)
 
 ## License
-Copyright © [André Storhaug](https://github.com/andstor)
+Copyright © 2020 [André Storhaug](https://github.com/andstor)
 
 three-voxel-loader is licensed under the [MIT License](https://github.com/andstor/three-voxel-loader/blob/master/LICENSE).
 
