@@ -3,7 +3,7 @@
 > [three.js](https://github.com/mrdoob/three.js) plugin for loading voxel data
 
 [![npm version](http://img.shields.io/npm/v/three-voxel-loader.svg?style=flat)](https://npmjs.org/package/three-voxel-loader "View this project on npm")
-[![Build Status](https://travis-ci.org/andstor/three-voxel-loader.svg?branch=master)](https://travis-ci.org/andstor/three-voxel-loader)
+![Build](https://github.com/andstor/three-voxel-loader/workflows/Build/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/andstor/three-voxel-loader/badge.svg?branch=master)](https://coveralls.io/github/andstor/three-voxel-loader?branch=master)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/andstor/three-voxel-loader.svg?)](https://lgtm.com/projects/g/andstor/three-voxel-loader/context:javascript)
 
