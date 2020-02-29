@@ -22,7 +22,7 @@ jobs:
         npm run build --if-present
         npm test -- --coverage --passWithNoTests --coverageReporters=text-lcov
 
-    - name: Build
+    - name: File existence
       id: check_files
       uses: andstor/file-existence-action@v1
       with:
