@@ -23,6 +23,7 @@ let umdConfig = {
         filename: "voxel-loader.js",
         library: "VoxelLoader",
         libraryTarget: 'umd',
+        globalObject: 'this'
     },
     module: {
       rules: [
@@ -39,7 +40,7 @@ let umdConfig = {
         new webpack.BannerPlugin({banner: banner}),
     ],
     externals: {
-      three: 'three',
+      three: 'THREE',
     }
 };
 
