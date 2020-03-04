@@ -5,9 +5,12 @@
 import { FileLoader, Loader, LoadingManager, Vector3 } from 'three';
 import { PointOctree } from "sparse-octree";
 import autoBind from 'auto-bind';
+import { levelOfDetail } from '../mixins/levelOfDetail';
 
 /**
  * Class for loading voxel data stored as a 3D array.
+ * @extends Loader
+ * @mixes levelOfDetail
  */
 class ArrayLoader extends Loader {
   /**
@@ -17,8 +20,7 @@ class ArrayLoader extends Loader {
   constructor(manager) {
     super(manager)
     autoBind(this);
-    this.LOD = null;
-    this.setLOD();
+    Object.assign(this, levelOfDetail);
   }
 
 	/**
@@ -41,15 +43,6 @@ class ArrayLoader extends Loader {
         .catch(err => console.error(err))
 
     }, onProgress, onError);
-  }
-
-  /**
-   * Set the vanted level of detail (LOD).
-   * @param {number} [maxPoints=1] Number of distinct points per octant in octree before it splits up.
-   * @param {number} [maxDepth=8] The maximum octree depth level, starting at 0.
-   */
-  setLOD(maxPoints = 1, maxDepth = 8) {
-    this.LOD = { maxPoints: maxPoints, maxDepth: maxDepth }
   }
 
 	/**

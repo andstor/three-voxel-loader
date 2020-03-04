@@ -1,7 +1,7 @@
 {
   "name": "three-voxel-loader",
-  "version": "1.0.0",
-  "description": "Load voxel data for visualization",
+  "version": "1.1.0",
+  "description": "three.js plugin for loading voxel data",
   "main": "lib/voxel-loader.js",
   "scripts": {
     "build": "webpack",
@@ -17,6 +17,7 @@
   "keywords": [
     "visualization",
     "voxel",
+    "loader",
     "three.js"
   ],
   "author": {

@@ -3,29 +3,29 @@
  */
 
 import autoBind from 'auto-bind';
-import { Color, BufferGeometry, Loader, MeshPhongMaterial, BoxGeometry, Vector3, Mesh, Geometry, VertexColors } from 'three';
-import { LoaderFactory } from "./LoaderFactory";
+import { Color, BufferGeometry, MeshPhongMaterial, BoxGeometry, Vector3, Mesh, Geometry, VertexColors } from 'three';
+import { LoaderFactory } from "./loaders/LoaderFactory";
+import { levelOfDetail } from './mixins/levelOfDetail';
 
 /**
  * Class for loading voxel data stored in various formats.
- * @extends Loader
  */
-class VoxelLoader extends Loader {
+class VoxelLoader {
   /**
    * Create a VoxelLoader.
    * @param {LoadingManager} manager
+   * @mixes levelOfDetail
    */
   constructor(manager) {
-    super(manager);
     autoBind(this);
 
+    Object.assign(this, levelOfDetail);
+    this.manager = manager;
     this.octree = null;
-    this.LOD = null;
-    this.setLOD();
-
     this.material = null;
-    this.setVoxelMaterial();
     this.voxelSize = null;
+
+    this.setVoxelMaterial();
     this.setVoxelSize();
   }
 
@@ -53,26 +53,28 @@ class VoxelLoader extends Loader {
   }
 
   /**
-   * Set the vanted level of detail (LOD).
-   * @param {number} maxPoints Number of distinct points per octant in octree before it splits up.
-   * @param {number} maxDepth The maximum octree depth level, starting at 0.
+   * Update the internal data structures and settings.
+	 * @return {Promise<PointOctree>} Promise with an updated octree.
    */
-  setLOD(maxPoints = 1, maxDepth = 8) {
-    this.LOD = { maxPoints: maxPoints, maxDepth: maxDepth }
+  update() {
+    if (this.octree === null) {
+      throw new Error('Octree is not built');
+    }
+    return this.parseData(this.octree, 'octree');
   }
 
   /**
 	 * Loads and parses a 3D model file from a URL.
 	 *
 	 * @param {String} url - URL to the VOX file.
-	 * @param {Function} [onLoad] - Callback invoked with the loaded object.
+	 * @param {Function} [onLoad] - Callback invoked with the Mesh object.
 	 * @param {Function} [onProgress] - Callback for download progress.
 	 * @param {Function} [onError] - Callback for download errors.
 	 */
   loadFile(url, onLoad, onProgress, onError) {
     let scope = this;
     let extension = url.split('.').pop().toLowerCase();
-    let loaderFactory = new LoaderFactory();
+    let loaderFactory = new LoaderFactory(this.manager);
 
     let loader = loaderFactory.getLoader(extension);
     loader.setLOD(this.LOD.maxPoints, this.LOD.maxDepth);
@@ -90,15 +92,15 @@ class VoxelLoader extends Loader {
    */
   parseData(data, type) {
     let scope = this;
-    let loaderFactory = new LoaderFactory();
+    let loaderFactory = new LoaderFactory(this.manager);
 
     let loader = loaderFactory.getLoader(type);
     loader.setLOD(this.LOD.maxPoints, this.LOD.maxDepth);
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       loader.parse(data).then((octree) => {
         scope.octree = octree;
-        resolve(scope.generateMesh(octree));
+        resolve(octree);
       });
     });
   }
@@ -112,22 +114,32 @@ class VoxelLoader extends Loader {
   generateMesh(octree) {
 
     let mergedGeometry = new Geometry();
-    let voxelGeometry = new BoxGeometry(this.voxelSize, this.voxelSize, this.voxelSize);
     const material = this.material;
-    let s = 1
-    //voxelGeometry.scale(s, s, s);
 
     for (const leaf of octree.leaves()) {
       if (leaf.points !== null) {
         const pos = new Vector3();
         var i;
+        let min = { x: leaf.points[0].x, y: leaf.points[0].y, z: leaf.points[0].z };
+        let max = { x: leaf.points[0].x, y: leaf.points[0].y, z: leaf.points[0].z };
+
         for (i = 0; i < leaf.points.length; i++) {
           const point = leaf.points[i];
           pos.add(point);
+          min.x = Math.min(min.x, point.x);
+          min.y = Math.min(min.y, point.y);
+          min.z = Math.min(min.z, point.z);
+          max.x = Math.max(max.x, point.x);
+          max.y = Math.max(max.y, point.y);
+          max.z = Math.max(max.z, point.z);
         }
-        pos.divideScalar(i);
 
-        //voxelGeometry.scale(i, i, i);
+        let width = Math.round((this.voxelSize + (max.x - min.x)) * 100) / 100;;
+        let height = Math.round((this.voxelSize + (max.y - min.y)) * 100) / 100;;
+        let depth = Math.round((this.voxelSize + (max.z - min.z)) * 100) / 100;
+
+        let voxelGeometry = new BoxGeometry(width, height, depth);
+        pos.divideScalar(i);
 
         const rgb = leaf.data[0].color;
         if (rgb != null) {
@@ -142,9 +154,6 @@ class VoxelLoader extends Loader {
         voxelGeometry.translate(pos.x, pos.y, pos.z);
         mergedGeometry.merge(voxelGeometry);
         voxelGeometry.translate(-pos.x, -pos.y, -pos.z);
-
-        //voxelGeometry.scale(-i, -i, -i);
-
       }
     }
 

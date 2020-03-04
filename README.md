@@ -7,15 +7,27 @@
 [![Coverage Status](https://coveralls.io/repos/github/andstor/three-voxel-loader/badge.svg?branch=master)](https://coveralls.io/github/andstor/three-voxel-loader?branch=master)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/andstor/three-voxel-loader.svg?)](https://lgtm.com/projects/g/andstor/three-voxel-loader/context:javascript)
 
-[Documentation](https://andstor.github.io/three-voxel-loader/) - [Wiki](https://github.com/andstor/three-voxel-loader/wiki)
+[Examples](https://andstor.github.io/three-voxel-loader/examples/) - 
+[Documentation](https://andstor.github.io/three-voxel-loader/) - 
+[Wiki](https://github.com/andstor/three-voxel-loader/wiki)
 
 ## Table of Contents
+
+  * [Preview](#preview)
   * [Installation](#installation)
   * [Usage](#usage)
   * [Import support](#import-support)
   * [License](#license)
 
+
+## 🖼 Preview
+
+<p align=center>
+	<img width="450" src="media/load-model.png" alt="Loading process">
+</p>
+
 ## Installation
+
 This library requires the peer dependency [three.js](https://github.com/mrdoob/three.js/).
 
 ```sh
@@ -29,11 +41,13 @@ $ npm install --save three-voxel-loader
 ## Usage
 
 ### Syntax
+
 ```js
 new VoxelLoader()
 ```
 
 ### Example
+
 ```js
 const VoxelLoader = require('three-voxel-loader');
 
@@ -43,7 +57,7 @@ let loader = new VoxelLoader();
 // Load a resource from provided URL.
 loader.load(
   // Resource URL.
-  'models/monster.vox',
+  'models/chicken.vox',
 
   // Called when resource is loaded.
   function ( voxels ) {
@@ -63,17 +77,21 @@ loader.load(
 ```
 
 ## Import support
+
 Importing of several file types and data structures with voxel data are supported.
 
 ### File formats
+
 - VOX
 - XML
 
 ### Data structures
+
 - 3D array
 - [Sparse octree](https://github.com/vanruesc/sparse-octree)
 
 ## License
+
 Copyright © 2020 [André Storhaug](https://github.com/andstor)
 
 three-voxel-loader is licensed under the [MIT License](https://github.com/andstor/three-voxel-loader/blob/master/LICENSE).
