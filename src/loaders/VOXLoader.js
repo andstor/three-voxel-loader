@@ -126,7 +126,7 @@ class VOXLoader extends Loader {
 
             onShape: (attributes, models) => {
               let modelId = models[0].modelId;
-              let position = new Vector3().add(vector)
+              let position = new Vector3().add(vector);
               let rotVec = new Matrix4().multiply(rotation);
 
               let size = data.sizes[modelId];
@@ -187,10 +187,10 @@ class VOXLoader extends Loader {
             var voxelData = { color: { r: color.r, g: color.g, b: color.b } };
             let position = new Vector3(element.x, element.z, element.y);
 
-            position.sub(worldCorrection)
+            position.sub(worldCorrection);
             // TODO fix rotation matrix basis
             //position.applyMatrix4(rot
-            position.add(pos)
+            position.add(pos);
 
             octree.insert(position, voxelData);
           }
