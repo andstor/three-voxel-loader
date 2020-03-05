@@ -25,7 +25,7 @@ This is a plugin for [three.js](https://github.com/mrdoob/three.js). It provides
 ## 🖼 Preview
 
 <p align=center>
-	<img width="450" src="media/load-model.png" alt="Loading process">
+	<img width="450" src="https://raw.githubusercontent.com/andstor/three-voxel-loader/master/media/load-model.png" alt="Preview">
 </p>
 
 ## Installation
