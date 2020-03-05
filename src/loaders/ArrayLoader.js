@@ -7,14 +7,12 @@ import { PointOctree } from "sparse-octree";
 import autoBind from 'auto-bind';
 import { levelOfDetail } from '../mixins/levelOfDetail';
 
-/**
- * Class for loading voxel data stored as a 3D array.
- * @extends Loader
- * @mixes levelOfDetail
- */
 class ArrayLoader extends Loader {
   /**
    * Create an ArrayLoader.
+   * @classdesc Class for loading voxel data stored as a 3D array.
+   * @extends Loader
+   * @mixes levelOfDetail
    * @param {LoadingManager} manager
    */
   constructor(manager) {

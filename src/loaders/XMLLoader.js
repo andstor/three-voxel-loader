@@ -7,14 +7,12 @@ import { FileLoader, Loader, Vector3, LoadingManager } from 'three';
 import { PointOctree } from "sparse-octree";
 import { levelOfDetail } from '../mixins/levelOfDetail';
 
-/**
- * Class for loading voxel data stored in XML files.
- * @extends Loader
- * @mixes levelOfDetail
- */
 class XMLLoader extends Loader {
   /**
    * Create a XMLLoader.
+   * @classdesc Class for loading voxel data stored in XML files.
+   * @extends Loader
+   * @mixes levelOfDetail
    * @param {LoadingManager} manager
    */
   constructor(manager) {

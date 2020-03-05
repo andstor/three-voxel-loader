@@ -7,12 +7,10 @@ import { Color, BufferGeometry, MeshPhongMaterial, BoxGeometry, Vector3, Mesh, G
 import { LoaderFactory } from "./loaders/LoaderFactory";
 import { levelOfDetail } from './mixins/levelOfDetail';
 
-/**
- * Class for loading voxel data stored in various formats.
- */
 class VoxelLoader {
   /**
    * Create a VoxelLoader.
+   * @classdesc Class for loading voxel data stored in various formats.
    * @param {LoadingManager} manager
    * @mixes levelOfDetail
    */
