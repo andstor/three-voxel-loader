@@ -9,8 +9,6 @@
 
 This is a plugin for [three.js](https://github.com/mrdoob/three.js). It provides support for loading voxel data and turning it into a three.js [Mesh](https://threejs.org/docs/#api/en/objects/Mesh).
 
-Examples — Documentation — Wiki
-
 [Examples](https://andstor.github.io/three-voxel-loader/examples/) - 
 [Documentation](https://andstor.github.io/three-voxel-loader/) - 
 [Wiki](https://github.com/andstor/three-voxel-loader/wiki)
