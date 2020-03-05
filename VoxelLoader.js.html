@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VoxelLoader.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ArrayLoader.html">ArrayLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#load">load</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="LoaderFactory.html">LoaderFactory</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LoaderFactory.html#getLoader">getLoader</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="OctreeLoader.html">OctreeLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="VoxelLoader.html">VoxelLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#generateMesh">generateMesh</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#loadFile">loadFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#parseData">parseData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setVoxelMaterial">setVoxelMaterial</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setVoxelSize">setVoxelSize</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#update">update</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="VOXLoader.html">VOXLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#load">load</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="XMLLoader.html">XMLLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#load">load</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading">Mixins</li><li class="nav-heading"><span class="nav-item-type type-mixin">M</span><span class="nav-item-name"><a href="levelOfDetail.html">levelOfDetail</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="levelOfDetail.html#.getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="levelOfDetail.html#.setLOD">setLOD</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">VoxelLoader.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @author André Storhaug &lt;andr3.storhaug@gmail.com>
+ */
+
+import autoBind from 'auto-bind';
+import { Color, BufferGeometry, MeshPhongMaterial, BoxGeometry, Vector3, Mesh, Geometry, VertexColors } from 'three';
+import { LoaderFactory } from "./loaders/LoaderFactory";
+import { levelOfDetail } from './mixins/levelOfDetail';
+
+/**
+ * Class for loading voxel data stored in various formats.
+ */
+class VoxelLoader {
+  /**
+   * Create a VoxelLoader.
+   * @param {LoadingManager} manager
+   * @mixes levelOfDetail
+   */
+  constructor(manager) {
+    autoBind(this);
+
+    Object.assign(this, levelOfDetail);
+    this.manager = manager;
+    this.octree = null;
+    this.material = null;
+    this.voxelSize = null;
+
+    this.setVoxelMaterial();
+    this.setVoxelSize();
+  }
+
+  /**
+   * Set the material used for all voxels.
+   * Note that the {@link Material.vertexColors} will be set to {@link VertexColors}.
+   * @param {Material} Material The wanted material.
+   */
+  setVoxelMaterial(material) {
+    let defaultMaterial = new MeshPhongMaterial({
+      color: 0xffffff
+    });
+
+    material = typeof material !== 'undefined' ? material : defaultMaterial;
+    material.vertexColors = VertexColors
+    this.material = material;
+  }
+
+  /**
+   * Set the size of the cubes representing voxels generated in {@link VoxelLoader#generateMesh}.
+   * @param {float} [voxelSize=1]
+   */
+  setVoxelSize(voxelSize = 1) {
+    this.voxelSize = voxelSize;
+  }
+
+  /**
+   * Update the internal data structures and settings.
+	 * @return {Promise&lt;PointOctree>} Promise with an updated octree.
+   */
+  update() {
+    if (this.octree === null) {
+      throw new Error('Octree is not built');
+    }
+    return this.parseData(this.octree, 'octree');
+  }
+
+  /**
+	 * Loads and parses a 3D model file from a URL.
+	 *
+	 * @param {String} url - URL to the VOX file.
+	 * @param {Function} [onLoad] - Callback invoked with the Mesh object.
+	 * @param {Function} [onProgress] - Callback for download progress.
+	 * @param {Function} [onError] - Callback for download errors.
+	 */
+  loadFile(url, onLoad, onProgress, onError) {
+    let scope = this;
+    let extension = url.split('.').pop().toLowerCase();
+    let loaderFactory = new LoaderFactory(this.manager);
+
+    let loader = loaderFactory.getLoader(extension);
+    loader.setLOD(this.LOD.maxPoints, this.LOD.maxDepth);
+
+    loader.load(url, function (octree) {
+      scope.octree = octree;
+      onLoad(scope.generateMesh(octree));
+    }, onProgress, onError);
+  }
+
+  /**
+   * Parses voxel data.
+   * @param {PointOctree} octree Octree with voxel data stored as points in space.
+	 * @return {Promise&lt;PointOctree>} Promise with an octree filled with voxel data.
+   */
+  parseData(data, type) {
+    let scope = this;
+    let loaderFactory = new LoaderFactory(this.manager);
+
+    let loader = loaderFactory.getLoader(type);
+    loader.setLOD(this.LOD.maxPoints, this.LOD.maxDepth);
+
+    return new Promise((resolve) => {
+      loader.parse(data).then((octree) => {
+        scope.octree = octree;
+        resolve(octree);
+      });
+    });
+  }
+
+  /**
+   * Generates a polygon mesh with cubes based on voxel data.
+   * One cube for each voxel.
+   * @param {PointOctree} octree Octree with voxel data stored as points in space.
+   * @returns {Mesh} 3D mesh based on voxel data
+   */
+  generateMesh(octree) {
+
+    let mergedGeometry = new Geometry();
+    const material = this.material;
+
+    for (const leaf of octree.leaves()) {
+      if (leaf.points !== null) {
+        const pos = new Vector3();
+        var i;
+        let min = { x: leaf.points[0].x, y: leaf.points[0].y, z: leaf.points[0].z };
+        let max = { x: leaf.points[0].x, y: leaf.points[0].y, z: leaf.points[0].z };
+
+        for (i = 0; i &lt; leaf.points.length; i++) {
+          const point = leaf.points[i];
+          pos.add(point);
+          min.x = Math.min(min.x, point.x);
+          min.y = Math.min(min.y, point.y);
+          min.z = Math.min(min.z, point.z);
+          max.x = Math.max(max.x, point.x);
+          max.y = Math.max(max.y, point.y);
+          max.z = Math.max(max.z, point.z);
+        }
+
+        let width = Math.round((this.voxelSize + (max.x - min.x)) * 100) / 100;;
+        let height = Math.round((this.voxelSize + (max.y - min.y)) * 100) / 100;;
+        let depth = Math.round((this.voxelSize + (max.z - min.z)) * 100) / 100;
+
+        let voxelGeometry = new BoxGeometry(width, height, depth);
+        pos.divideScalar(i);
+
+        const rgb = leaf.data[0].color;
+        if (rgb != null) {
+          const color = new Color().setRGB(rgb.r / 255, rgb.g / 255, rgb.b / 255);
+
+          for (var i = 0; i &lt; voxelGeometry.faces.length; i++) {
+            let face = voxelGeometry.faces[i];
+            face.color.set(color);
+          }
+        }
+
+        voxelGeometry.translate(pos.x, pos.y, pos.z);
+        mergedGeometry.merge(voxelGeometry);
+        voxelGeometry.translate(-pos.x, -pos.y, -pos.z);
+      }
+    }
+
+    let bufGeometry = new BufferGeometry().fromGeometry(mergedGeometry);
+    bufGeometry.computeFaceNormals();
+    bufGeometry.computeVertexNormals();
+
+    var voxels = new Mesh(bufGeometry, material);
+
+    return voxels;
+  }
+}
+
+export default VoxelLoader;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 00:34:24 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

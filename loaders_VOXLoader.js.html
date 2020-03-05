@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>loaders/VOXLoader.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ArrayLoader.html">ArrayLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#load">load</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ArrayLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="LoaderFactory.html">LoaderFactory</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LoaderFactory.html#getLoader">getLoader</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="OctreeLoader.html">OctreeLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="OctreeLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="VoxelLoader.html">VoxelLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#generateMesh">generateMesh</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#loadFile">loadFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#parseData">parseData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setVoxelMaterial">setVoxelMaterial</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#setVoxelSize">setVoxelSize</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoxelLoader.html#update">update</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="VOXLoader.html">VOXLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#load">load</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VOXLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="XMLLoader.html">XMLLoader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#load">load</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#parse">parse</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#setLOD">setLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="XMLLoader.html#setLOD">setLOD</a></span></li><li class="nav-heading">Mixins</li><li class="nav-heading"><span class="nav-item-type type-mixin">M</span><span class="nav-item-name"><a href="levelOfDetail.html">levelOfDetail</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="levelOfDetail.html#.getLOD">getLOD</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="levelOfDetail.html#.setLOD">setLOD</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">loaders/VOXLoader.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @author André Storhaug &lt;andr3.storhaug@gmail.com>
+ */
+
+import autoBind from 'auto-bind';
+import { FileLoader, Matrix4, Vector3, Loader, LoadingManager } from 'three';
+import { PointOctree } from "sparse-octree";
+import { VoxReader, VoxNodeTools, VoxTools } from '@sh-dave/format-vox';
+import { Vector4 } from 'math-ds';
+import { levelOfDetail } from '../mixins/levelOfDetail';
+
+/**
+ * Class for loading voxel data stored in VOX files.
+ * @extends Loader
+ * @mixes levelOfDetail
+ */
+class VOXLoader extends Loader {
+  /**
+   * Create a VOXLoader.
+   * @param {LoadingManager} manager
+   */
+  constructor(manager) {
+    super(manager)
+    autoBind(this);
+    Object.assign(this, levelOfDetail);
+  }
+
+	/**
+	 * Loads and parses a VOX file from a URL.
+	 *
+	 * @param {String} url - URL to the VOX file.
+	 * @param {Function} [onLoad] - Callback invoked with the loaded object.
+	 * @param {Function} [onProgress] - Callback for download progress.
+	 * @param {Function} [onError] - Callback for download errors.
+	 */
+  load(url, onLoad, onProgress, onError) {
+    var scope = this;
+
+    var loader = new FileLoader(this.manager);
+    loader.setPath(this.path);
+    loader.setResponseType('arraybuffer')
+    loader.load(url, function (buffer) {
+
+      scope.parse(buffer)
+        .then(octree => onLoad(octree))
+        .catch(err => console.error(err))
+
+    }, onProgress, onError);
+  }
+
+	/**
+	 * Parse VOX file data.
+	 * @param {Buffer} buffer Content of VOX file.
+	 * @return {Promise&lt;PointOctree>} Promise with an octree filled with voxel data.
+	 */
+  parse(buffer) {
+
+    return new Promise((resolve, reject) => {
+      VoxReader.read(buffer, (data, err) => {
+
+        if (err) {
+          reject(err);
+        }
+
+        let transforms = [];
+        let vector = new Vector3();
+        let rotation = new Matrix4();
+
+        let positions = [];
+
+        if (data.world == null) {
+          let size = data.sizes[0];
+          let modelSize = new Vector3(size.x, size.z, size.y);
+
+          positions.push({
+            model: 0,
+            position: new Vector3(),
+            rotation: new Vector4(),
+            size: modelSize,
+          });
+
+        } else {
+
+          VoxNodeTools.walkNodeGraph(data, {
+            beginGraph: () => {
+            },
+
+            endGraph: () => {
+            },
+
+            onTransform: attributes => {
+              if (VoxTools.dictHasTranslation(attributes)) {
+                const t = VoxTools.getTranslationFromDict(attributes);
+                transforms.push(new Vector3(t.x, t.z, t.y))
+                vector.add(new Vector3(t.x, t.z, t.y))
+              } else {
+                transforms.push(new Vector3())
+              }
+
+              if (VoxTools.dictHasRotation(attributes)) {
+                const r = VoxTools.getRotationFromDict(attributes);
+                let m = new Matrix4();
+                m.set(
+                  r._00, r._01, r._02, 0,
+                  r._10, r._11, r._12, 0,
+                  r._20, r._21, r._22, 0,
+                  0, 0, 0, 1
+                );
+
+                transforms.push(m)
+                rotation.multiply(m);
+              } else {
+                transforms.push(new Matrix4())
+              }
+            },
+
+            beginGroup: () => {
+            },
+
+            endGroup: () => {
+              let m = transforms.pop();
+              let vec = transforms.pop();
+              vector.sub(vec);
+              rotation.multiply(m.getInverse(m));
+            },
+
+            onShape: (attributes, models) => {
+              let modelId = models[0].modelId;
+              let position = new Vector3().add(vector);
+              let rotVec = new Matrix4().multiply(rotation);
+
+              let size = data.sizes[modelId];
+              let modelSize = new Vector3(size.x, size.z, size.y);
+
+              positions.push({
+                model: modelId,
+                position: position,
+                rotation: rotVec,
+                size: modelSize,
+              });
+
+              let m = transforms.pop();
+              let vec = transforms.pop();
+              vector.sub(vec);
+              rotation.multiply(m.getInverse(m));
+            }
+          });
+        }
+
+        let xMin = Infinity;
+        let yMin = Infinity;
+        let zMin = Infinity;
+
+        let xMax = -Infinity;
+        let yMax = -Infinity;
+        let zMax = -Infinity;
+
+        for (let i = 0; i &lt; positions.length; i++) {
+          const element = positions[i];
+          const position = element.position;
+          const size = element.size;
+
+          if (position.x &lt; xMin) xMin = position.x - size.x / 2;
+          if (position.y &lt; yMin) yMin = position.y - size.y / 2;
+          if (position.z &lt; zMin) zMin = position.z - size.z / 2;
+
+          if (position.x > xMax) xMax = position.x + size.x / 2;
+          if (position.y > yMax) yMax = position.y + size.y / 2;
+          if (position.z > zMax) zMax = position.z + size.z / 2;
+        }
+
+        const min = new Vector3(xMin, yMin, zMin);
+        const max = new Vector3(xMax, yMax, zMax);
+
+        let octree = new PointOctree(min, max, 0, this.LOD.maxPoints, this.LOD.maxDepth);
+
+        for (let i = 0; i &lt; positions.length; i++) {
+          let model = positions[i].model;
+          let pos = positions[i].position;
+          let size = positions[i].size;
+          let worldCorrection = new Vector3().copy(size).divideScalar(2);
+
+          for (let j = 0; j &lt; data.models[model].length; j++) {
+            const element = data.models[model][j];
+            const color = data.palette[element.colorIndex];
+
+            var voxelData = { color: { r: color.r, g: color.g, b: color.b } };
+            let position = new Vector3(element.x, element.z, element.y);
+
+            position.sub(worldCorrection);
+            // TODO fix rotation matrix basis
+            //position.applyMatrix4(rot
+            position.add(pos);
+
+            octree.insert(position, voxelData);
+          }
+        }
+
+        resolve(octree);
+      });
+    });
+  }
+
+}
+
+export { VOXLoader };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Mar 05 2020 00:34:24 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
