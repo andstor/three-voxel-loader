@@ -1,6 +1,6 @@
 {
   "name": "three-voxel-loader",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "three.js plugin for loading voxel data",
   "main": "lib/voxel-loader.js",
   "scripts": {
