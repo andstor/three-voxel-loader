@@ -16,7 +16,7 @@ jobs:
       - name: Test
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: '10.x'
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
@@ -29,9 +29,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: '10.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
+      - run: npm install
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -44,10 +44,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: '10.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@andstor'
-      - run: npm ci
+      - run: npm install
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
