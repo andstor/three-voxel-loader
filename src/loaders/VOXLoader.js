@@ -9,14 +9,12 @@ import { VoxReader, VoxNodeTools, VoxTools } from '@sh-dave/format-vox';
 import { Vector4 } from 'math-ds';
 import { levelOfDetail } from '../mixins/levelOfDetail';
 
-/**
- * Class for loading voxel data stored in VOX files.
- * @extends Loader
- * @mixes levelOfDetail
- */
 class VOXLoader extends Loader {
   /**
    * Create a VOXLoader.
+   * @classdesc Class for loading voxel data stored in VOX files.
+   * @extends Loader
+   * @mixes levelOfDetail
    * @param {LoadingManager} manager
    */
   constructor(manager) {
