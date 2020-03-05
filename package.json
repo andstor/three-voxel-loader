@@ -1,13 +1,13 @@
 {
   "name": "three-voxel-loader",
-  "version": "1.0.0",
-  "description": "Load voxel data for visualization",
+  "version": "1.1.0",
+  "description": "three.js plugin for loading voxel data",
   "main": "lib/voxel-loader.js",
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "test": "jest",
-    "coverage": "jest --coverage",
+    "test": "jest --passWithNoTests",
+    "coverage": "npm test -- --coverage --coverageReporters=text-lcov",
     "prepare": "npm run build"
   },
   "repository": {
@@ -17,6 +17,7 @@
   "keywords": [
     "visualization",
     "voxel",
+    "loader",
     "three.js"
   ],
   "author": {

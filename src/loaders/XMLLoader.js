@@ -2,14 +2,15 @@
  * @author André Storhaug <andr3.storhaug@gmail.com>
  */
 
-import { Loader } from 'three/src/loaders/Loader';
 import autoBind from 'auto-bind';
-import { FileLoader, Vector3, LoadingManager } from 'three';
+import { FileLoader, Loader, Vector3, LoadingManager } from 'three';
 import { PointOctree } from "sparse-octree";
+import { levelOfDetail } from '../mixins/levelOfDetail';
 
 /**
  * Class for loading voxel data stored in XML files.
  * @extends Loader
+ * @mixes levelOfDetail
  */
 class XMLLoader extends Loader {
   /**
@@ -19,8 +20,7 @@ class XMLLoader extends Loader {
   constructor(manager) {
     super(manager)
     autoBind(this);
-    this.LOD = null;
-    this.setLOD();
+    Object.assign(this, levelOfDetail);
   }
 
 	/**
@@ -44,15 +44,6 @@ class XMLLoader extends Loader {
         .catch(err => console.error(err))
 
     }, onProgress, onError);
-  }
-
-  /**
-   * Set the vanted level of detail (LOD).
-   * @param {number} [maxPoints=1] Number of distinct points per octant in octree before it splits up.
-   * @param {number} [maxDepth=8] The maximum octree depth level, starting at 0.
-   */
-  setLOD(maxPoints = 1, maxDepth = 8) {
-    this.LOD = { maxPoints: maxPoints, maxDepth: maxDepth }
   }
 
 	/**
