@@ -54,7 +54,6 @@ class XMLLoader extends Loader {
 
       let parser = new DOMParser();
       let xmlDoc = parser.parseFromString(buffer, "application/xml");
-
       const dimensionsNode = xmlDoc.documentElement.getElementsByTagName("dimensions")[0];
       const widthNode = dimensionsNode.getElementsByTagName("width")[0];
       const width = widthNode.childNodes[0].nodeValue;
@@ -73,22 +72,32 @@ class XMLLoader extends Loader {
       let voxelData = {};
 
       Array.from(voxelNodes).forEach(voxelNode => {
-        for (let i = 0; i < voxelNode.children.length; i++) {
-          const positionNode = voxelNode.children[i];
-          let x, y, z;
+        const positionNode = voxelNode.getElementsByTagName("position")[0];
 
-          const xNode = positionNode.getElementsByTagName("x")[0];
-          x = xNode.childNodes[0].nodeValue;
-          const yNode = positionNode.getElementsByTagName("y")[0];
-          y = yNode.childNodes[0].nodeValue;
-          const zNode = positionNode.getElementsByTagName("z")[0];
-          z = zNode.childNodes[0].nodeValue;
+        let x, y, z;
+        const xNode = positionNode.getElementsByTagName("x")[0];
+        x = xNode.childNodes[0].nodeValue * 1;
+        const yNode = positionNode.getElementsByTagName("y")[0];
+        y = yNode.childNodes[0].nodeValue * 1;
+        const zNode = positionNode.getElementsByTagName("z")[0];
+        z = zNode.childNodes[0].nodeValue * 1;
 
-          x = x - width / 2;
-          y = y - height / 2;
-          z = z - depth / 2;
-          octree.insert(new Vector3(x, y, z), voxelData);
+        x = x - width / 2;
+        y = y - height / 2;
+        z = z - depth / 2;
+
+        const colorNode = voxelNode.getElementsByTagName("color")[0];
+        if (colorNode) {
+          let r, g, b;
+          const rNode = colorNode.getElementsByTagName("r")[0];
+          r = rNode.childNodes[0].nodeValue * 1;
+          const gNode = colorNode.getElementsByTagName("g")[0];
+          g = gNode.childNodes[0].nodeValue * 1;
+          const bNode = colorNode.getElementsByTagName("b")[0];
+          b = bNode.childNodes[0].nodeValue * 1;
+          voxelData = { color: { r, g, b } };
         }
+        octree.insert(new Vector3(x, y, z), voxelData);
       });
 
       resolve(octree);
