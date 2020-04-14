@@ -43,7 +43,7 @@ function init() {
   // GUI
   const models = {
     'chicken': './models/chicken.vox',
-  }
+  };
 
   var params = {
     model: models["chicken"],
@@ -114,7 +114,7 @@ function init() {
 
   // Voxel Loader
   loader = new VoxelLoader();
-  loader.setVoxelSize(params.size)
+  loader.setVoxelSize(params.size);
   loader.setLOD(params.LOD.maxPoints, params.LOD.maxDepth);
 
   loader.loadFile(params.model, function (voxels) {
