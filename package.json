@@ -37,6 +37,7 @@
   "dependencies": {
     "@sh-dave/format-vox": "^0.1.5",
     "auto-bind": "^4.0.0",
+    "binvox": "^1.0.2",
     "iterator-result": "^1.0.0",
     "math-ds": ">= 1.0.0 < 2.0.0",
     "sparse-octree": "^6.0.2"
