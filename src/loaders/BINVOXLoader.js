@@ -8,15 +8,14 @@ import { PointOctree } from "sparse-octree";
 import { Parser } from 'binvox';
 import { levelOfDetail } from '../mixins/levelOfDetail';
 
-/**
- * Class for loading voxel data stored in BINVOX files.
- * @extends Loader
- */
 class BINVOXLoader extends Loader {
+
   /**
    * Create a BINVOXLoader.
-   * @param {LoadingManager} manager
+   * @classdesc Class for loading voxel data stored in BINVOX files.
+   * @extends Loader
    * @mixes levelOfDetail
+   * @param {LoadingManager} manager
    */
   constructor(manager) {
     super(manager);
