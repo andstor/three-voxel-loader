@@ -34,9 +34,9 @@ class ArrayLoader extends Loader {
     var loader = new FileLoader(this.manager);
     loader.setPath(this.path);
     //loader.setResponseType('arraybuffer')
-    loader.load(url, function (buffer) {
+    loader.load(url, function (data) {
 
-      scope.parse(buffer)
+      scope.parse(data)
         .then(octree => onLoad(octree))
         .catch(err => console.error(err))
 
@@ -45,39 +45,50 @@ class ArrayLoader extends Loader {
 
 	/**
 	 * Parses a 3D array.
-   * @param {number[][][]} matrix The matrix to be transformed.
+   * @param {Object} data The volume data to parse.
+   * @param {number[][][]} data.voxels The voxel data.
+   * @param {number[][][][]} [data.colors=null] The color data.
 	 * @return {Promise<PointOctree>} Promise with an octree filled with voxel data.
 	 */
-  parse(array) {
-    var scope = this;
+  parse(data = null) {
+    let voxels = data.voxels;
+    let colors = data.colors;
+
+    var that = this;
     return new Promise((resolve, reject) => {
 
-      const minX = -(array[0][0].length - 1)/2
-      const maxX = (array[0][0].length - 1)/2
+      const minX = -(voxels[0][0].length - 1) / 2
+      const maxX = (voxels[0][0].length - 1) / 2
 
-      const minZ = -(array.length - 1)/2
-      const maxZ = (array.length - 1)/2
+      const minZ = -(voxels.length - 1) / 2
+      const maxZ = (voxels.length - 1) / 2
 
-      const minY = -(array[0].length - 1)/2
-      const maxY = (array[0].length - 1)/2
+      const minY = -(voxels[0].length - 1) / 2
+      const maxY = (voxels[0].length - 1) / 2
 
       const min = new Vector3(minX, minY, minZ);
       const max = new Vector3(maxX, maxY, maxZ);
 
-      const octree = new PointOctree(min, max, 0, scope.LOD.maxPoints, scope.LOD.maxDepth);
+      const octree = new PointOctree(min, max, 0, that.LOD.maxPoints, that.LOD.maxDepth);
 
       var voxelData = {};
 
-      for (var i = 0; i < array.length; i++) { // z-axis
-        for (let j = 0; j < array[i].length; j++) { // y-axis
-          for (let k = 0; k < array[i][j].length; k++) { // x-axis
-            const element = array[i][j][k];
+      for (var i = 0; i < voxels.length; i++) { // z-axis
+        for (let j = 0; j < voxels[i].length; j++) { // y-axis
+          for (let k = 0; k < voxels[i][j].length; k++) { // x-axis
+            const element = voxels[i][j][k];
             if (element === 1) {
 
-              let x = k - ((array[i][j].length - 1) / 2);
-              let y = j - ((array[i].length - 1) / 2);
-              let z = i - ((array.length - 1) / 2);
+              let x = k - ((voxels[i][j].length - 1) / 2);
+              let y = j - ((voxels[i].length - 1) / 2);
+              let z = i - ((voxels.length - 1) / 2);
 
+              if (colors) {
+                let r = colors[i][j][k][0];
+                let g = colors[i][j][k][1];
+                let b = colors[i][j][k][2];
+                voxelData = { color: { r, g, b } };
+              }
               octree.insert(new Vector3(x, y, z), voxelData);
             }
           }
