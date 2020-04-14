@@ -6,6 +6,7 @@ import { ArrayLoader } from "./ArrayLoader";
 import { OctreeLoader } from "./OctreeLoader";
 import { VOXLoader } from "./VOXLoader";
 import { XMLLoader } from "./XMLLoader";
+import { BINVOXLoader } from "./BINVOXLoader";
 
 /**
  * Factory class for creating various loaders.
@@ -29,6 +30,9 @@ class LoaderFactory {
         break;
       case 'xml':
         return new XMLLoader(this.manager);
+        break;
+      case 'binvox':
+        return new BINVOXLoader(this.manager);
         break;
       case 'array':
         return new ArrayLoader(this.manager);

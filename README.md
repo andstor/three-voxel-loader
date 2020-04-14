@@ -84,8 +84,9 @@ Importing of several file types and data structures with voxel data are supporte
 
 ### File formats
 
-- VOX
+- [VOX](https://ephtracy.github.io)
 - XML
+- [BINVOX](https://www.patrickmin.com/binvox/binvox.html)
 
 ### Data structures
 
