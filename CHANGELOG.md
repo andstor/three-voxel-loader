@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 ## [Unreleased]
 
 ## [1.2.1] - 2020-04-27
-## Fixed
+### Fixed
 - Fix automated coverage upload.
 
 ## [1.2.0] - 2020-04-14
