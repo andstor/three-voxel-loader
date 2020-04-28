@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>VoxelLoader - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,105 +29,497 @@
 
 <div id="main">
     
+    <h1 class="page-title">VoxelLoader</h1>
+    
 
     
 
 
 
+
+<section>
+
+<header>
+    
+        <h2>
+        VoxelLoader
+        </h2>
+        
+            <div class="class-description">Class for loading voxel data stored in various formats.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="VoxelLoader"><span class="type-signature"></span>new VoxelLoader<span class="signature">(manager)</span><span class="type-signature"></span></h4>
+
     
 
 
 
+<div class="description">
+    Create a VoxelLoader.
+</div>
 
 
 
 
 
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="mixes">Mixes In:</dt>
+
+        <dd class="mixes"><ul>
+        
+            <li><a href="levelOfDetail.html">levelOfDetail</a></li>
+        
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="VoxelLoader.js.html">VoxelLoader.js</a>, <a href="VoxelLoader.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>manager</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>LoadingManager</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getLOD"><span class="type-signature"></span>getLOD<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
-    <section class="readme">
-        <article><h1>three-voxel-loader</h1>
-<blockquote>
-<p>three.js plugin for loading voxel data</p>
-</blockquote>
-<p><a href="https://npmjs.org/package/three-voxel-loader" title="View this project on npm"><img src="http://img.shields.io/npm/v/three-voxel-loader.svg?style=flat" alt="npm version"></a>
-<img src="https://github.com/andstor/three-voxel-loader/workflows/Build/badge.svg" alt="Build">
-<a href="https://coveralls.io/github/andstor/three-voxel-loader?branch=master"><img src="https://coveralls.io/repos/github/andstor/three-voxel-loader/badge.svg?branch=master" alt="Coverage Status"></a>
-<a href="https://lgtm.com/projects/g/andstor/three-voxel-loader/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/g/andstor/three-voxel-loader.svg?" alt="Language grade: JavaScript"></a></p>
-<p>This is a plugin for <a href="https://github.com/mrdoob/three.js">three.js</a>. It provides support for loading voxel data and turning it into a three.js <a href="https://threejs.org/docs/#api/en/objects/Mesh">Mesh</a>.</p>
-<p><a href="https://andstor.github.io/three-voxel-loader/examples/">Examples</a> -
-<a href="https://andstor.github.io/three-voxel-loader/">Documentation</a> -
-<a href="https://github.com/andstor/three-voxel-loader/wiki">Wiki</a></p>
-<h2>Table of Contents</h2>
-<ul>
-<li><a href="#preview">Preview</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#import-support">Import support</a></li>
-<li><a href="#license">License</a></li>
-</ul>
-<h2>🖼 Preview</h2>
-<p align=center>
-	<img width="450" src="https://raw.githubusercontent.com/andstor/three-voxel-loader/master/media/load-model.png" alt="Preview">
-</p>
-<h2>Installation</h2>
-<p>This library requires the peer dependency <a href="https://github.com/mrdoob/three.js/">three.js</a>.</p>
-<pre class="prettyprint source lang-sh"><code>$ npm install --save three
-</code></pre>
-<pre class="prettyprint source lang-sh"><code>$ npm install --save three-voxel-loader
-</code></pre>
-<h2>Usage</h2>
-<h3>Syntax</h3>
-<pre class="prettyprint source lang-js"><code>new VoxelLoader()
-</code></pre>
-<h3>Example</h3>
-<pre class="prettyprint source lang-js"><code>const VoxelLoader = require('three-voxel-loader');
 
-// Instantiate the loader
-let loader = new VoxelLoader();
-
-// Load a resource from provided URL.
-loader.load(
-  // Resource URL.
-  'models/chicken.vox',
-
-  // Called when resource is loaded.
-  function ( voxels ) {
-    scene.add( voxels );
-  },
-
-  // Called when loading is in progresses.
-  function ( xhr ) {
-    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-  },
-
-  // Called when loading has errors.
-  function ( error ) {
-    console.log( 'An error happened' );
-  }
-);
-</code></pre>
-<h2>Import support</h2>
-<p>Importing of several file types and data structures with voxel data are supported.</p>
-<h3>File formats</h3>
-<ul>
-<li><a href="https://ephtracy.github.io">VOX</a></li>
-<li>XML</li>
-<li><a href="https://www.patrickmin.com/binvox/binvox.html">BINVOX</a></li>
-</ul>
-<h3>Data structures</h3>
-<ul>
-<li>3D array</li>
-<li><a href="https://github.com/vanruesc/sparse-octree">Sparse octree</a></li>
-</ul>
-<h2>License</h2>
-<p>Copyright © 2020 <a href="https://github.com/andstor">André Storhaug</a></p>
-<p>three-voxel-loader is licensed under the <a href="https://github.com/andstor/three-voxel-loader/blob/master/LICENSE">MIT License</a>.</p></article>
-    </section>
+<div class="description">
+    Get the Level Of Detail (LOD) value.
+</div>
 
 
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="mixes">Mixes In:</dt>
+
+        <dd class="mixes"><ul>
+        
+            <li><a href="levelOfDetail.html#.getLOD">levelOfDetail.getLOD</a></li>
+        
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mixins_levelOfDetail.js.html">mixins/levelOfDetail.js</a>, <a href="mixins_levelOfDetail.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setLOD"><span class="type-signature"></span>setLOD<span class="signature">(maxPoints<span class="signature-attributes">opt</span>, maxDepth<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Set the vanted level of detail (LOD).
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="mixes">Mixes In:</dt>
+
+        <dd class="mixes"><ul>
+        
+            <li><a href="levelOfDetail.html#.setLOD">levelOfDetail.setLOD</a></li>
+        
+        </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mixins_levelOfDetail.js.html">mixins/levelOfDetail.js</a>, <a href="mixins_levelOfDetail.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxPoints</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">
+                Number of distinct points per octant in octree before it splits up.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxDepth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    8
+                
+                </td>
+            
+
+            <td class="description last">
+                The maximum octree depth level, starting at 0.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
