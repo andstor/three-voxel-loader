@@ -33,7 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 ## 1.0.0 - 2020-02-16
 
-[Unreleased]: https://github.com/andstor/copycat-action/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/andstor/copycat-action/compare/v1.2.2...HEAD
+[1.2.2]: https://github.com/andstor/three-voxel-loader/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/andstor/three-voxel-loader/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/andstor/three-voxel-loader/compare/v1.1.0...v1.2.0
 [1.1.5]: https://github.com/andstor/three-voxel-loader/compare/v1.1.0...v1.1.5
