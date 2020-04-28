@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [1.2.2] - 2020-04-28
+### Changed
+- Use Rollup instead of Webpack
+
 ## [1.2.1] - 2020-04-27
 ### Fixed
 - Fix automated coverage upload.

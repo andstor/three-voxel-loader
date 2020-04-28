@@ -3,9 +3,9 @@
  */
 
 import autoBind from 'auto-bind';
-import { FileLoader, Matrix4, Vector3, Loader, LoadingManager } from 'three';
+import { FileLoader, Matrix4, Vector3, Loader } from 'three';
 import { PointOctree } from "sparse-octree";
-import { VoxReader, VoxNodeTools, VoxTools } from '@sh-dave/format-vox';
+import formatVox from '@sh-dave/format-vox';
 import { Vector4 } from 'math-ds';
 import { levelOfDetail } from '../mixins/levelOfDetail';
 
@@ -52,7 +52,7 @@ class VOXLoader extends Loader {
 	 * @return {Promise<PointOctree>} Promise with an octree filled with voxel data.
 	 */
   parse(buffer) {
-
+    const { VoxReader, VoxNodeTools, VoxTools } = formatVox;
     return new Promise((resolve, reject) => {
       VoxReader.read(buffer, (data, err) => {
 

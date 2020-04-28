@@ -3,7 +3,7 @@
  */
 
 import autoBind from 'auto-bind';
-import { FileLoader, Loader, Vector3, LoadingManager } from 'three';
+import { FileLoader, Loader, Vector3 } from 'three';
 import { PointOctree } from "sparse-octree";
 import { Parser } from 'binvox';
 import { levelOfDetail } from '../mixins/levelOfDetail';
@@ -56,7 +56,6 @@ class BINVOXLoader extends Loader {
     return new Promise((resolve, reject) => {
       const parser = new Parser();
       let data = parser.parse(buffer);
-      console.log(data)
       const depth = data.dimension.depth;
       const width = data.dimension.width;
       const height = data.dimension.height;

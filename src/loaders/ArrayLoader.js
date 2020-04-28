@@ -2,7 +2,7 @@
  * @author André Storhaug <andr3.storhaug@gmail.com>
  */
 
-import { FileLoader, Loader, LoadingManager, Vector3 } from 'three';
+import { FileLoader, Loader, Vector3 } from 'three';
 import { PointOctree } from "sparse-octree";
 import autoBind from 'auto-bind';
 import { levelOfDetail } from '../mixins/levelOfDetail';
