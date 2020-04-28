@@ -3,7 +3,7 @@
  */
 
 import autoBind from 'auto-bind';
-import { FileLoader, Loader, Vector3, LoadingManager } from 'three';
+import { FileLoader, Loader, Vector3 } from 'three';
 import { PointOctree } from "sparse-octree";
 import { levelOfDetail } from '../mixins/levelOfDetail';
 
