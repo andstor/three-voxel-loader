@@ -3,7 +3,7 @@
  */
 
 import autoBind from 'auto-bind';
-import { Color, BufferGeometry, MeshPhongMaterial, BoxGeometry, Vector3, Mesh, Geometry, VertexColors } from 'three';
+import { Color, BufferGeometry, MeshPhongMaterial, BoxGeometry, Vector3, Mesh, VertexColors } from 'three';
 import { LoaderFactory } from "./loaders/LoaderFactory";
 import { levelOfDetail } from './mixins/levelOfDetail';
 
@@ -38,7 +38,7 @@ export class VoxelLoader {
     });
 
     material = typeof material !== 'undefined' ? material : defaultMaterial;
-    material.vertexColors = VertexColors
+    material.vertexColors = VertexColors;
     this.material = material;
   }
 
@@ -111,7 +111,7 @@ export class VoxelLoader {
    */
   generateMesh(octree) {
 
-    let mergedGeometry = new Geometry();
+    let mergedGeometry = new BoxGeometry();
     const material = this.material;
 
     for (const leaf of octree.leaves()) {
